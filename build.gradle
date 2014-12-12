@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.9.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'monster-tracker'
+    version =  '0.0.1'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    // tag::actuator[]
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    // end::actuator[]
+    compile 'org.springframework:spring-webmvc:4.1.2.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.1.2.RELEASE'
+    compile 'com.google.code.gson:gson:2.3.1'
+    compile 'org.codehaus.groovy:groovy:2.3.8'
+
+    runtime 'com.h2database:h2:1.4.182'
+
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.1'
+}

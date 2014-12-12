@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+</head>
+<body>
+
+    <ul id="monsters">
+
+    </ul>
+
+    <script>
+        $(function() {
+
+            $.ajax({
+                url: 'http://localhost:8080/monsters'
+            }).done(function(data) {
+
+                $.each(data, function() {
+                    var headerTemplate = "<li><div>{{MONSTERNAME}} {{HD}}HD AC{{AC}} {{NUMATTACKS}} attack(s){{#WEAPONATTACK}} by weapon{{/WEAPONATTACK}}</div>";
+                    var detailsTemplate = "<ul><li>Treasure: {{TREASURE}}</li><li>{{SIZE}} size</li><li>{{MOVEMENT}}&quot; movement</li>";
+                    var abilitiesTemplate = "<li>Abilities: {{SPECIALABILITIES}} {{EXCEPTIONALABILITIES}}</li></ul>";
+                    var html = Mustache.render(headerTemplate + detailsTemplate + abilitiesTemplate, this);
+                    $('#monsters').append(html);
+                });
+            });
+
+        });
+
+    </script>
+</body>
+</html>
