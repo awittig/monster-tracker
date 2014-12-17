@@ -1,20 +1,20 @@
 Create table GenericMonsters (
-    MonsterName char(20),
+    MonsterName varchar(20),
     NumAttacks int,
-    WeaponAttack boolean,
-    DamagePerAttack char(50),
+    WeaponAttack tinyint,
+    DamagePerAttack varchar(50),
     HD int,
     AC int,
     Size char(1),
-    Movement char(5),
-    Treasure char(15),
+    Movement varchar(5),
+    Treasure varchar(15),
     NumSpecialAbilities int,
-    SpecialAbilities char(255),
+    SpecialAbilities varchar(255),
     NumExceptionalAbilities int,
-    ExceptionalAbilities char (255),
-    Intelligence char (10),
-    Alignment char(5),
-    Rarity char(15)
+    ExceptionalAbilities varchar (255),
+    Intelligence varchar (10),
+    Alignment varchar(5),
+    Rarity varchar(15)
 )
 ;
 create table Experience (

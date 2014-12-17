@@ -7,7 +7,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
 </head>
 <body>
-
     <ul id="monsters">
 
     </ul>
@@ -16,13 +15,13 @@
         $(function() {
 
             $.ajax({
-                url: 'http://localhost:8080/monsters'
+                url: 'http://localhost:8080/controller/monsters'
             }).done(function(data) {
 
                 $.each(data, function() {
-                    var headerTemplate = "<li><div>{{MONSTERNAME}} {{HD}}HD AC{{AC}} {{NUMATTACKS}} attack(s){{#WEAPONATTACK}} by weapon{{/WEAPONATTACK}}</div>";
-                    var detailsTemplate = "<ul><li>Treasure: {{TREASURE}}</li><li>{{SIZE}} size</li><li>{{MOVEMENT}}&quot; movement</li>";
-                    var abilitiesTemplate = "<li>Abilities: {{SPECIALABILITIES}} {{EXCEPTIONALABILITIES}}</li></ul>";
+                    var headerTemplate = "<li><div>{{MonsterName}} {{HD}}HD AC{{AC}} {{NumAttacks}} attack(s){{#WeaponAttack}} by weapon{{/WeaponAttack}}</div>";
+                    var detailsTemplate = "<ul><li>Treasure: {{Treasure}}</li><li>{{Size}} size</li><li>{{Movement}}&quot; movement</li>";
+                    var abilitiesTemplate = "<li>Abilities: {{SpecialAbilities}} {{ExceptionalAbilities}}</li></ul>";
                     var html = Mustache.render(headerTemplate + detailsTemplate + abilitiesTemplate, this);
                     $('#monsters').append(html);
                 });

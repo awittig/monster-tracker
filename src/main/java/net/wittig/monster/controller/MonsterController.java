@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
+@RequestMapping("controller")
 public class MonsterController {
 
     @Autowired
@@ -27,6 +28,26 @@ public class MonsterController {
         List<Map<String, Object>> monsters = jdbcOperations.queryForList("select * from GenericMonsters", new HashMap<String,Object>());
         Gson gson = new Gson();
         return gson.toJson(monsters);
+    }
+
+    @RequestMapping(value = "monster", method = RequestMethod.POST)
+    public String saveMonster(@RequestParam Map<String, String> params) {
+
+        System.out.println(params);
+        params.put("weaponAttack", params.containsKey("weaponAttack") ? "1" : "0");
+        jdbcOperations.update("insert into GenericMonsters" +
+                        "(MonsterName, NumAttacks, WeaponAttack, DamagePerAttack, HD, AC, Size, Movement, Treasure," +
+                        " NumSpecialAbilities, SpecialAbilities, NumExceptionalAbilities, ExceptionalAbilities, Intelligence, Alignment, Rarity)" +
+                        "values (:name, :numAttacks, :weaponAttack, :damagePerAttack, :HD, :AC, :size, :movement, :treasure," +
+                        " :numSpecialAbilities, :specialAbilities, :numExceptionalAbilities, :exceptionalAbilities, :intelligence, :alignment, :rarity)",
+                params);
+        return "monster";
+    }
+
+    @RequestMapping(value = "monster", method = RequestMethod.GET)
+    public String getMonster() {
+
+        return "monster";
     }
 
     @RequestMapping(value = "base-xp", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
