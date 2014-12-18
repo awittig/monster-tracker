@@ -4,6 +4,7 @@ Create table GenericMonsters (
     WeaponAttack tinyint,
     DamagePerAttack varchar(50),
     HD int,
+    HitModifier int,
     AC int,
     Size char(1),
     Movement varchar(5),

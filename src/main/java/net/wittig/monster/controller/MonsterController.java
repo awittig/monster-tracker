@@ -22,7 +22,7 @@ public class MonsterController {
     @Autowired
     private NamedParameterJdbcOperations jdbcOperations;
 
-    @RequestMapping(value="monsters", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="monsters", method=RequestMethod.GET)
     public String monsters() {
 
         List<Map<String, Object>> monsters = jdbcOperations.queryForList("select * from GenericMonsters", new HashMap<String,Object>());
@@ -36,9 +36,9 @@ public class MonsterController {
         System.out.println(params);
         params.put("weaponAttack", params.containsKey("weaponAttack") ? "1" : "0");
         jdbcOperations.update("insert into GenericMonsters" +
-                        "(MonsterName, NumAttacks, WeaponAttack, DamagePerAttack, HD, AC, Size, Movement, Treasure," +
+                        "(MonsterName, NumAttacks, WeaponAttack, DamagePerAttack, HD, HitModifier, AC, Size, Movement, Treasure," +
                         " NumSpecialAbilities, SpecialAbilities, NumExceptionalAbilities, ExceptionalAbilities, Intelligence, Alignment, Rarity)" +
-                        "values (:name, :numAttacks, :weaponAttack, :damagePerAttack, :HD, :AC, :size, :movement, :treasure," +
+                        "values (:name, :numAttacks, :weaponAttack, :damagePerAttack, :HD, :HitModifier, :AC, :size, :movement, :treasure," +
                         " :numSpecialAbilities, :specialAbilities, :numExceptionalAbilities, :exceptionalAbilities, :intelligence, :alignment, :rarity)",
                 params);
         return "monster";
@@ -50,7 +50,7 @@ public class MonsterController {
         return "monster";
     }
 
-    @RequestMapping(value = "base-xp", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "base-xp", method = RequestMethod.GET)
     public String baseXp(@RequestParam Integer hitDice, @RequestParam Integer modifier) {
 
         String query = "select e.* from HitDiceRange hdr" +

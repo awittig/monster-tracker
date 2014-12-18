@@ -1,0 +1,48 @@
+monster
+------------
+name
+hitdice
+ac
+treasure
+size
+movement
+notes
+
+add monsters to monsters table
+add weapons to weapons table
+
+
+encounter
+---------
+type [room|trap]
+name
+monster(s)
+	count
+	weapon
+	HP
+	strategy
+	notes - prepopulated with Monsters.specialAbilities, Monsters.exceptionalAbilities
+	treasure
+	killed count
+
+	
+baseXp + (HP * hitPointXp) + (specialAbilityCount * specialAbilityXp) + (exceptionalAbilityCount * exceptionalAbilityXp))
+
+(monsterCount * baseXP) + (sumOfHitPoints() * hitPointXP) + (sumOfSpecialAbilities() * specialAbilityXP) + (sumOfExceptionalAbilities() * exceptionalAbilityXP)
+
+HD 3 + 2
+
+fits in ID=5 because HD is 3 and modifier is greater than max modifier on ID=4
+
+
+if it's between min and max HD, exclusive, then match found
+if it matches a min HD, make sure modifier >= min modifier
+if it matches a max HD, make sure modifier <= max modifier
+
+select *
+from range
+	where (minHd < :hd < maxHD)
+	or (:hd = minHd and :mod >= minMod)
+	or (:hd = maxHd and :mod <= maxMod)
+
+

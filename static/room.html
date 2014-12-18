@@ -8,19 +8,71 @@
 </head>
 <body>
 
-<h1 id="room-name">Room Name</h1>
+    <label for="monstertype">Monster Type:</label>
+    <select id="monstertype"></select>
+
+    <div id="monsters-hp-container">
+        <input type="number" class="hitpoints" value="0" />
+        <input type="button" id="addHitPointEntry" value="+" />
+    </div>
+
+    <div id="calculatedXp">0</div>
+
+<!--<h1 id="room-name">Room Name</h1>
 <input type="radio" name="type" value="fight"/>
 <input type="radio" name="type" value="trap"/>
 <div id="monsters-container">
     <label for="strategy">Strategy</label>
-    <textarea id="strategy" name="strategy" />
+    <textarea id="strategy" name="strategy"></textarea>
     <label for="notes">Notes</label>
-    <textarea id="notes" name="notes" />
+    <textarea id="notes" name="notes"></textarea>
     <label for="size">Size</label>
     <input type="text" id="size" name="size" />
     <label for="movement">Movement</label>
     <input type="text" id="movement" name="movement" />
-</div>
-<div id="monsters-hp-container"></div>
+</div>-->
+
+    <script>
+        $(function() {
+            $.get("controller/monsters", function(data) {
+                $.each(data, function() {
+                    var template = "<option value='{{MonsterName}}'>{{MonsterName}}</option>";
+                    var newOption = $(Mustache.render(template, this));
+                    newOption.data(this);
+                    $("#monstertype").append(newOption);
+                });
+            });
+
+            $("#addHitPointEntry").click(function() {
+                var $input = $("input.hitpoints:last");
+                $input.after("<input type='number' class='hitpoints' value='0' />");
+            });
+
+            $('.hitpoints').change(function() {
+                var monsterType = $('#monstertype option:selected').data();
+                var hitPoints = $(this).val();
+                $.ajax({
+                    url: 'controller/base-xp',
+                    data: {
+                        hitDice: monsterType.HD,
+                        modifier: monsterType.HitModifier
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        var xpData = data[0];
+                        var baseXp = xpData.BasicXP;
+                        var hitPointXp = xpData.HitPointXP;
+                        var specialAbilityCount = monsterType.NumSpecialAbilities;
+                        var specialAbilityXp = xpData.SpecialAbilityXP;
+                        var exceptionalAbilityCount = monsterType.NumExceptionalAbilities;
+                        var exceptionalAbilityXp = xpData.ExceptionalAbilityXP;
+                        var calculatedXp = baseXp + (hitPoints * hitPointXp) + (specialAbilityCount * specialAbilityXp) + (exceptionalAbilityCount * exceptionalAbilityXp);
+                        $('#calculatedXp').html(calculatedXp);
+                    }
+                });
+            });
+        });
+
+    </script>
 </body>
 </html>
