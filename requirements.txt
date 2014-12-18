@@ -30,6 +30,9 @@ baseXp + (HP * hitPointXp) + (specialAbilityCount * specialAbilityXp) + (excepti
 
 (monsterCount * baseXP) + (sumOfHitPoints() * hitPointXP) + (sumOfSpecialAbilities() * specialAbilityXP) + (sumOfExceptionalAbilities() * exceptionalAbilityXP)
 
+
+(totalHitPoints * hitPointXp) + monsterCount * (baseXp + (specialAbilityCount * specialAbilityXp) + (exceptionalAbilityCount * exceptionalAbilityXp)))
+
 HD 3 + 2
 
 fits in ID=5 because HD is 3 and modifier is greater than max modifier on ID=4

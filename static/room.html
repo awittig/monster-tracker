@@ -3,34 +3,42 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css' />
+    <link rel='stylesheet' type='text/css' href='css/global.css' />
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+    <style>
+        #monster-type-container, #monster-count-container, .monster-hp-container, #total-xp-container {
+            margin-top:10px;
+        }
+        #total-xp-container {
+            font-size:22px;
+        }
+    </style>
+
 </head>
 <body>
 
-    <label for="monstertype">Monster Type:</label>
-    <select id="monstertype"></select>
-
-    <div id="monsters-hp-container">
-        <input type="number" class="hitpoints" value="0" />
-        <input type="button" id="addHitPointEntry" value="+" />
+    <div id="monster-type-container">
+        <label for="monstertype">Monster Type:</label>
+        <select id="monstertype"></select>
     </div>
 
-    <div id="calculatedXp">0</div>
+    <div id="monster-count-container">
+        <input type="number" id="monsterCount" value="1" min="1" />
+        <input type="button" id="addHitPointEntries" value="Add Monsters" />
+    </div>
 
-<!--<h1 id="room-name">Room Name</h1>
-<input type="radio" name="type" value="fight"/>
-<input type="radio" name="type" value="trap"/>
-<div id="monsters-container">
-    <label for="strategy">Strategy</label>
-    <textarea id="strategy" name="strategy"></textarea>
-    <label for="notes">Notes</label>
-    <textarea id="notes" name="notes"></textarea>
-    <label for="size">Size</label>
-    <input type="text" id="size" name="size" />
-    <label for="movement">Movement</label>
-    <input type="text" id="movement" name="movement" />
-</div>-->
+    <div id="monsters-hp-container">
+        <div class="monster-hp-container">
+            <input type="number" class="hitpoints" value="1" min="1" />
+            <label>HP</label>
+        </div>
+    </div>
+
+    <div id="total-xp-container">
+        Total XP: <span id="calculatedXp">0</span>
+    </div>
 
     <script>
         $(function() {
@@ -40,38 +48,48 @@
                     var newOption = $(Mustache.render(template, this));
                     newOption.data(this);
                     $("#monstertype").append(newOption);
+                    $('.hitpoints').change();
                 });
             });
 
-            $("#addHitPointEntry").click(function() {
-                var $input = $("input.hitpoints:last");
-                $input.after("<input type='number' class='hitpoints' value='0' />");
+            $("#addHitPointEntries").click(function() {
+                var $input = $(".monster-hp-container:last");
+                for (var i = 0; i < $('#monsterCount').val(); i++) {
+                    $input.after("<div class='monster-hp-container'><input type='number' class='hitpoints' value='1' /> <label>HP</label></div>");
+                }
+                $input.children('input').change();
             });
-
-            $('.hitpoints').change(function() {
-                var monsterType = $('#monstertype option:selected').data();
-                var hitPoints = $(this).val();
-                $.ajax({
-                    url: 'controller/base-xp',
-                    data: {
-                        hitDice: monsterType.HD,
-                        modifier: monsterType.HitModifier
-                    },
-                    dataType: 'json',
-                    success: function(data) {
-                        var xpData = data[0];
-                        var baseXp = xpData.BasicXP;
-                        var hitPointXp = xpData.HitPointXP;
-                        var specialAbilityCount = monsterType.NumSpecialAbilities;
-                        var specialAbilityXp = xpData.SpecialAbilityXP;
-                        var exceptionalAbilityCount = monsterType.NumExceptionalAbilities;
-                        var exceptionalAbilityXp = xpData.ExceptionalAbilityXP;
-                        var calculatedXp = baseXp + (hitPoints * hitPointXp) + (specialAbilityCount * specialAbilityXp) + (exceptionalAbilityCount * exceptionalAbilityXp);
-                        $('#calculatedXp').html(calculatedXp);
-                    }
-                });
-            });
+            $('body').on('change', '.hitpoints, #monstertype', calculateXp);
         });
+
+        var calculateXp = function () {
+            var monsterType = $('#monstertype option:selected').data();
+            var hitPoints = $(this).val();
+            $.ajax({
+                url: 'controller/base-xp',
+                data: {
+                    hitDice: monsterType.HD,
+                    modifier: monsterType.HitModifier
+                },
+                dataType: 'json',
+                success: function (data) {
+                    var monsterCount = $('.hitpoints').length;
+                    var totalHitPoints = 0;
+                    $('.hitpoints').each(function () {
+                        totalHitPoints += Number($(this).val());
+                    });
+                    var xpData = data[0];
+                    var baseXp = xpData.BasicXP;
+                    var hitPointXp = xpData.HitPointXP;
+                    var specialAbilityCount = monsterType.NumSpecialAbilities;
+                    var specialAbilityXp = xpData.SpecialAbilityXP;
+                    var exceptionalAbilityCount = monsterType.NumExceptionalAbilities;
+                    var exceptionalAbilityXp = xpData.ExceptionalAbilityXP;
+                    var calculatedXp = (totalHitPoints * hitPointXp) + monsterCount * (baseXp + (specialAbilityCount * specialAbilityXp) + (exceptionalAbilityCount * exceptionalAbilityXp));
+                    $('#calculatedXp').html(calculatedXp);
+                }
+            });
+        };
 
     </script>
 </body>
