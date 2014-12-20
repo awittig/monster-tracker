@@ -14,10 +14,7 @@
     <script>
         $(function() {
 
-            $.ajax({
-                url: 'http://localhost:8080/controller/monsters'
-            }).done(function(data) {
-
+            $.getJSON('controller/monsters', function(data) {
                 $.each(data, function() {
                     var headerTemplate = "<li><div>{{MonsterName}} {{HD}}HD AC{{AC}} {{NumAttacks}} attack(s){{#WeaponAttack}} by weapon{{/WeaponAttack}}</div>";
                     var detailsTemplate = "<ul><li>Treasure: {{Treasure}}</li><li>{{Size}} size</li><li>{{Movement}}&quot; movement</li>";
@@ -26,7 +23,6 @@
                     $('#monsters').append(html);
                 });
             });
-
         });
 
     </script>
