@@ -42,7 +42,7 @@
 
     <script>
         $(function() {
-            $.get("controller/monsters", function(data) {
+            $.getJSON("controller/monsters", function(data) {
                 $.each(data, function() {
                     var template = "<option value='{{MonsterName}}'>{{MonsterName}}</option>";
                     var newOption = $(Mustache.render(template, this));

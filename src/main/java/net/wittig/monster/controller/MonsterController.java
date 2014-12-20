@@ -38,7 +38,7 @@ public class MonsterController {
         jdbcOperations.update("insert into GenericMonsters" +
                         "(MonsterName, NumAttacks, WeaponAttack, DamagePerAttack, HD, HitModifier, AC, Size, Movement, Treasure," +
                         " NumSpecialAbilities, SpecialAbilities, NumExceptionalAbilities, ExceptionalAbilities, Intelligence, Alignment, Rarity)" +
-                        "values (:name, :numAttacks, :weaponAttack, :damagePerAttack, :HD, :HitModifier, :AC, :size, :movement, :treasure," +
+                        "values (:name, :numAttacks, :weaponAttack, :damagePerAttack, :HD, :hitModifier, :AC, :size, :movement, :treasure," +
                         " :numSpecialAbilities, :specialAbilities, :numExceptionalAbilities, :exceptionalAbilities, :intelligence, :alignment, :rarity)",
                 params);
         return "monster";
