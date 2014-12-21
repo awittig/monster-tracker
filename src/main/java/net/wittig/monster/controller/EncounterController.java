@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EncounterController {
 
-    @RequestMapping("/encounter")
+    @RequestMapping("/controller/encounter")
     public String test() {
 
         return "hello, monsters";
