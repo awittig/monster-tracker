@@ -1,4 +1,4 @@
-insert into GenericMonsters values (
+insert into monster_type values (
 
     'Santa',
     2,
@@ -35,7 +35,7 @@ insert into GenericMonsters values (
       'rare'
   );
 
-insert into Experience (HitDiceRangeId, BasicXP, HitPointXP, SpecialAbilityXP, ExceptionalAbilityXP) values
+insert into experience (hit_dice_range_id, basic_xp, hit_point_xp, special_ability_xp, exceptional_ability_xp) values
 (1, 5, 1, 2, 25),
 (2, 10, 1, 4, 35),
 (3, 20, 2, 8, 45),
@@ -43,7 +43,7 @@ insert into Experience (HitDiceRangeId, BasicXP, HitPointXP, SpecialAbilityXP, E
 (5, 60, 4, 25, 65),
 (6, 90, 5, 40, 75)
 ;
-insert into HitDiceRange (Id, MinHitDie, MinModifier, MaxHitDie, MaxModifier) values
+insert into hit_dice_range (id, min_hit_die, min_hit_die_modifier, max_hit_die, max_hit_die_modifier) values
 (1, 0, 0, 1, -2),
 (2, 1, -1, 1, 0),
 (3, 1, 1, 2, 0),

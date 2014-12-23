@@ -49,3 +49,22 @@ from range
 	or (:hd = maxHd and :mod <= maxMod)
 
 
+encounter
+---------------
+id*
+name
+
+encounter_monster_type
+------------------------
+encounter_id*
+monster_type_id*
+monster_count
+strategy
+notes
+
+encounter_monster
+---------------------
+encounter_id
+monster_type_id
+hit_points
+dead_flag

@@ -25,7 +25,7 @@ public class MonsterController {
     @RequestMapping(value="monsters", method=RequestMethod.GET)
     public String monsters() {
 
-        List<Map<String, Object>> monsters = jdbcOperations.queryForList("select * from GenericMonsters", new HashMap<String,Object>());
+        List<Map<String, Object>> monsters = jdbcOperations.queryForList("select * from monster_type", new HashMap<String,Object>());
         Gson gson = new Gson();
         return gson.toJson(monsters);
     }
@@ -35,9 +35,9 @@ public class MonsterController {
 
         System.out.println(params);
         params.put("weaponAttack", params.containsKey("weaponAttack") ? "1" : "0");
-        jdbcOperations.update("insert into GenericMonsters" +
-                        "(MonsterName, NumAttacks, WeaponAttack, DamagePerAttack, HD, HitModifier, AC, Size, Movement, Treasure," +
-                        " NumSpecialAbilities, SpecialAbilities, NumExceptionalAbilities, ExceptionalAbilities, Intelligence, Alignment, Rarity)" +
+        jdbcOperations.update("insert into monster_type" +
+                        "(name, attack_count, weapon_attack_flag, damage_per_attack, hit_dice, hit_die_modifier, armor_class, "size", movement, treasure," +
+                        " special_ability_count, special_abilities, exceptional_ability_count, exceptional_abilities, intelligence, alignment, rarity)" +
                         "values (:name, :numAttacks, :weaponAttack, :damagePerAttack, :HD, :hitModifier, :AC, :size, :movement, :treasure," +
                         " :numSpecialAbilities, :specialAbilities, :numExceptionalAbilities, :exceptionalAbilities, :intelligence, :alignment, :rarity)",
                 params);
@@ -53,12 +53,12 @@ public class MonsterController {
     @RequestMapping(value = "base-xp", method = RequestMethod.GET)
     public String baseXp(@RequestParam Integer hitDice, @RequestParam Integer modifier) {
 
-        String query = "select e.* from HitDiceRange hdr" +
-                " join Experience e" +
-                "   on hdr.id = e.HitDiceRangeId" +
-                " where (hdr.MinHitDie < :hitDice and :hitDice < hdr.MaxHitDie)" +
-                "   or (:hitDice = hdr.MinHitDie and :mod >= hdr.MinModifier and (:hitDice < hdr.MaxHitDie or (:hitDice = hdr.MaxHitDie and :mod <= hdr.MaxModifier)))" +
-                "   or (:hitDice = hdr.MaxHitDie and :mod <= hdr.MaxModifier and (:hitDice > hdr.MinHitDie or (:hitDice = hdr.MinHitDie and :mod >= hdr.MinModifier)))";
+        String query = "select e.* from hit_dice_range hdr" +
+                " join experience e" +
+                "   on hdr.id = e.hit_dice_range_id" +
+                " where (hdr.min_hit_die < :hitDice and :hitDice < hdr.max_hit_die)" +
+                "   or (:hitDice = hdr.min_hit_die and :mod >= hdr.min_hit_die_modifier and (:hitDice < hdr.max_hit_die or (:hitDice = hdr.max_hit_die and :mod <= hdr.max_hit_die_modifier)))" +
+                "   or (:hitDice = hdr.max_hit_die and :mod <= hdr.max_hit_die_modifier and (:hitDice > hdr.min_hit_die or (:hitDice = hdr.min_hit_die and :mod >= hdr.min_hit_die_modifier)))";
 
         SqlParameterSource params = new MapSqlParameterSource()
                 .addValue("hitDice", hitDice)
