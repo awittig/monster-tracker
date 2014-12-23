@@ -13,7 +13,7 @@
             margin-top:10px;
         }
         .monster-hp-container {
-            display:inline;
+            display:inline-block;
             margin:10px;
         }
         #total-xp-container {
@@ -26,28 +26,52 @@
         .template {
             display:none;
         }
+        .stats-group label {
+            display:block;
+        }
+        .stats-group {
+            margin:5px;
+        }
     </style>
 
 </head>
 <body>
 
     <div class="monster-type-container template">
-        <input type="number" class="monster-count" value="1" min="1" />
-        <select class="monstertype"><option value="">Choose...</option></select>
-        <label>HD</label>
-        <input type="number" class="hitdie-input" />
-        <label>Modifier</label>
-        <input type="number" class="hitdie-modifier-input" />
-        <div class="monsters-hp-container">
+        <div class="stats-group">
+            <input type="number" class="monster-count" value="1" min="1" />
+            <select class="monstertype"><option value="">Choose...</option></select>
+            <span class="hitdie"></span><span class="hitdie-modifier"></span>HD
+            <span class="armor-class"></span>AC
+        </div>
+        <div class="stats-group">
+            <span class="num-attacks"></span> attack(s) with ?TODO?
+        </div>
+        <div class="stats-group">
+            <span class="monsters-hp-container"></span>
+        </div>
+        <div class="stats-group">
+            <label>Strategy</label>
+            <textarea class="strategy"></textarea>
+        </div>
+        <div class="stats-group">
+            <label>Notes</label>
+            <textarea class="notes"></textarea>
+        </div>
+        <div class="stats-group">
+            <span class="size"></span> size w/ <span class="movement"></span> movement
+        </div>
+        <div class="stats-group">
+            Treasure: <span class="treasure"></span>
         </div>
     </div>
 
 
     <input type="button" id="add-new-monster-type" value="Add new monster type" />
 
-    <div id="total-xp-container">
+    <!--<div id="total-xp-container">
         Total XP: <span id="calculatedXp">0</span>
-    </div>
+    </div>-->
 
 </body>
 </html>

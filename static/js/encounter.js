@@ -14,15 +14,22 @@ $(function() {
         var $container = $(this).parents('.monster-type-container').find(".monsters-hp-container");
         $container.empty();
         for (var i = 0; i < $(this).val(); i++) {
-            $container.append("<div class='monster-hp-container'><input type='number' class='hitpoints' value='1' /> <label>HP</label></div>");
+            $container.append("<div class='monster-hp-container'><input type='number' class='hitpoints' value='1' /> HP <input type='checkbox' name='dead' />Dead</div>");
         }
         $container.children('input').change();
     })
-    .on('change', '.hitpoints, .monstertype', calculateXp)
+    //.on('change', '.hitpoints, .monstertype', calculateXp)
     .on('change', '.monstertype', function() {
         var $data = $(this).find('option:selected').data();
-        $(this).parents('.monster-type-container').find('.hitdie-input').val($data.HD);
-        $(this).parents('.monster-type-container').find('.hitdie-modifier-input').val($data.HitModifier);
+        var $container = $(this).parents('.monster-type-container');
+        $container.find('.hitdie').html($data.HD);
+        var sign = Number($data.HitModifier) < 0 ? '' : '+';
+        $container.find('.hitdie-modifier').html(sign + $data.HitModifier);
+        $container.find('.armor-class').html($data.AC);
+        $container.find('.num-attacks').html($data.NumAttacks);
+        $container.find('.size').html($data.Size);
+        $container.find('.movement').html($data.Movement);
+        $container.find('.treasure').html($data.Treasure);
     });
     $('.monster-count').change();
 
