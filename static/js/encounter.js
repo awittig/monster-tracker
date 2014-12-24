@@ -41,13 +41,40 @@ $(function() {
     });
 
     $('#save-button').click(function() {
-        $("form.monster-type-container").submit();
+        //$("form.monster-type-container:not(.template)").submit();
+        //event.preventDefault();
+        $.ajax({
+            url: 'controller/encounter',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: $("#encounter-form").serializeJSON()
+        });
+
+        var encounterId = $("#encounter-id").val();
+        $.ajax({
+            url: 'controller/encounter/'+encounterId+'/monster-type',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: $("form.monster-type-container:not(template)").serializeJSON(),
+            complete: function(data) {
+                alert(data);
+            }
+        });
     });
 
     $("body").on('submit', 'form.monster-type-container:not(.template)', function(event) {
         event.preventDefault();
-        $.post('controller/encounter', $(this).serializeJSON(), function(data) {
-            alert(data);
+        $.ajax({
+            url: 'controller/encounter',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: $(this).serializeJSON(),
+            complete: function(data) {
+                alert(data);
+            }
         });
     });
 });

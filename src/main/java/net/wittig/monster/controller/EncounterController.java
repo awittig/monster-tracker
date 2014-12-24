@@ -1,11 +1,6 @@
 package net.wittig.monster.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.Map;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class EncounterController {
@@ -13,14 +8,21 @@ public class EncounterController {
     @RequestMapping("/controller/encounter")
     public String test() {
 
+        System.out.println("get");
         return "hello, monsters";
     }
 
     @RequestMapping(value="/controller/encounter", method=RequestMethod.POST)
-    public String post(@RequestParam Map<String, String> params) {
+    public String post(@RequestBody(required = false) Encounter encounter) {
 
-        System.out.println(params);
+        System.out.println("post");
+        return "hello, monsters";
+    }
 
+    @RequestMapping(value="/controller/encounter/{encounterId}/monster-type", method=RequestMethod.POST)
+    public String post(@RequestBody(required = false) EncounterMonsterType encounterMonsterType, @PathVariable Integer encounterId) {
+
+        System.out.println("post");
         return "hello, monsters";
     }
 }

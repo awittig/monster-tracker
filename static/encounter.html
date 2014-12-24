@@ -38,9 +38,13 @@
 </head>
 <body>
 
+    <form id="encounter-form">
+        <input id="encounter-name" type="text" name="name" />
+        <input type="hidden" id="encounter-id" name="id" value="555" />
+    </form>
+
     <form class="monster-type-container template">
         <div class="stats-group">
-            <input type="hidden" class="encounter-id" name="encounter-id" value="" />
             <input type="number" class="monster-count" value="1" min="1" />
             <select class="monstertype" name="monster-type-id"><option value="">Choose...</option></select>
             <span class="hitdie"></span><span class="hitdie-modifier"></span>HD
