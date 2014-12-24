@@ -36,7 +36,7 @@ public class MonsterController {
         System.out.println(params);
         params.put("weaponAttack", params.containsKey("weaponAttack") ? "1" : "0");
         jdbcOperations.update("insert into monster_type" +
-                        "(name, attack_count, weapon_attack_flag, damage_per_attack, hit_dice, hit_die_modifier, armor_class, "size", movement, treasure," +
+                        "(name, attack_count, weapon_attack_flag, damage_per_attack, hit_dice, hit_die_modifier, armor_class, size, movement, treasure," +
                         " special_ability_count, special_abilities, exceptional_ability_count, exceptional_abilities, intelligence, alignment, rarity)" +
                         "values (:name, :numAttacks, :weaponAttack, :damagePerAttack, :HD, :hitModifier, :AC, :size, :movement, :treasure," +
                         " :numSpecialAbilities, :specialAbilities, :numExceptionalAbilities, :exceptionalAbilities, :intelligence, :alignment, :rarity)",

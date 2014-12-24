@@ -7,6 +7,7 @@
     <link rel='stylesheet' type='text/css' href='css/global.css' />
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+    <script src="js/jquery.serialize-object.min.js"></script>
     <script src="js/encounter.js"></script>
     <style>
         .monster-type-container, .monsters-hp-container, #total-xp-container {
@@ -37,10 +38,11 @@
 </head>
 <body>
 
-    <div class="monster-type-container template">
+    <form class="monster-type-container template">
         <div class="stats-group">
+            <input type="hidden" class="encounter-id" name="encounter-id" value="" />
             <input type="number" class="monster-count" value="1" min="1" />
-            <select class="monstertype"><option value="">Choose...</option></select>
+            <select class="monstertype" name="monster-type-id"><option value="">Choose...</option></select>
             <span class="hitdie"></span><span class="hitdie-modifier"></span>HD
             <span class="armor-class"></span>AC
         </div>
@@ -52,11 +54,11 @@
         </div>
         <div class="stats-group">
             <label>Strategy</label>
-            <textarea class="strategy"></textarea>
+            <textarea class="strategy" name="strategy"></textarea>
         </div>
         <div class="stats-group">
             <label>Notes</label>
-            <textarea class="notes"></textarea>
+            <textarea class="notes" name="notes"></textarea>
         </div>
         <div class="stats-group">
             <span class="size"></span> size w/ <span class="movement"></span> movement
@@ -64,10 +66,11 @@
         <div class="stats-group">
             Treasure: <span class="treasure"></span>
         </div>
-    </div>
+    </form>
 
 
     <input type="button" id="add-new-monster-type" value="Add new monster type" />
+    <input type="button" id="save-button" value="Save" />
 
     <!--<div id="total-xp-container">
         Total XP: <span id="calculatedXp">0</span>
