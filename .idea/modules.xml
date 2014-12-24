@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/monster-tracker.iml" filepath="$PROJECT_DIR$/monster-tracker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/monster-tracker-2.iml" filepath="$PROJECT_DIR$/monster-tracker-2.iml" />
     </modules>
   </component>
 </project>
