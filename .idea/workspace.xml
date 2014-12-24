@@ -2,129 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a4de5b03-96b9-4ce0-b91d-f7a1578ccd3d" name="Default" comment="renaming stuff">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/1.11/taskArtifacts/cache.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/1.11/taskArtifacts/cache.properties.lock" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/1.11/taskArtifacts/fileHashes.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/1.11/taskArtifacts/fileSnapshots.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/1.11/taskArtifacts/outputFileStates.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/1.11/taskArtifacts/taskArtifacts.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/2.1/taskArtifacts/cache.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/2.1/taskArtifacts/cache.properties.lock" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/2.1/taskArtifacts/fileHashes.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/2.1/taskArtifacts/fileSnapshots.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/2.1/taskArtifacts/outputFileStates.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/2.1/taskArtifacts/taskArtifacts.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__aopalliance_aopalliance_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__ch_qos_logback_logback_classic_1_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__ch_qos_logback_logback_core_1_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_classmate_1_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_core_2_3_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_databind_2_3_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_3_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_h2database_h2_1_4_182.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_logging_commons_logging_1_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_validation_validation_api_1_1_0_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_11.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__mysql_mysql_connector_java_5_1_34.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_core_7_0_56.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_el_7_0_56.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_logging_juli_7_0_56.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_websocket_7_0_56.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_tomcat_jdbc_7_0_56.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_tomcat_tomcat_juli_7_0_56.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_codehaus_groovy_groovy_2_3_8.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_jetty_continuation_8_1_15_v20140411.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_jetty_http_8_1_15_v20140411.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_jetty_io_8_1_15_v20140411.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_jetty_jsp_8_1_15_v20140411.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_jetty_security_8_1_15_v20140411.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_jetty_server_8_1_15_v20140411.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_jetty_servlet_8_1_15_v20140411.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_jetty_util_8_1_15_v20140411.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_jetty_webapp_8_1_15_v20140411.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_jetty_xml_8_1_15_v20140411.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_orbit_com_sun_el_2_2_0_v201108011116.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_orbit_javax_el_2_2_0_v201108011116.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_orbit_javax_servlet_3_0_0_v201112011016.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_orbit_javax_servlet_jsp_2_2_0_v201112011158.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_orbit_javax_servlet_jsp_jstl_1_2_0_v201105211821.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_orbit_org_apache_jasper_glassfish_2_2_2_v201112011158.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_orbit_org_apache_taglibs_standard_glassfish_1_2_0_v201112081803.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jetty_orbit_org_eclipse_jdt_core_3_7_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hibernate_hibernate_validator_5_0_3_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jboss_logging_jboss_logging_3_1_1_GA.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_jcl_over_slf4j_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_jul_to_slf4j_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_log4j_over_slf4j_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_slf4j_api_1_7_7.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_1_1_9_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_actuator_1_1_9_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_autoconfigure_1_1_9_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_1_1_9_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_actuator_1_1_9_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_jdbc_1_1_9_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_jetty_1_1_9_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_logging_1_1_9_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_tomcat_1_1_9_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_boot_spring_boot_starter_web_1_1_9_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_aop_4_0_8_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_aop_4_1_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_beans_4_0_8_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_beans_4_1_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_4_0_8_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_4_1_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_core_4_0_8_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_core_4_1_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_expression_4_0_8_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_expression_4_1_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_jdbc_4_1_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_tx_4_1_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_web_4_0_8_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_web_4_1_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_webmvc_4_0_8_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_webmvc_4_1_2_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_yaml_snakeyaml_1_13.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/workspace.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.gradle/1.11/taskArtifacts/cache.properties.lock" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.gradle/1.11/taskArtifacts/cache.properties.lock" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.gradle/1.11/taskArtifacts/fileHashes.bin" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.gradle/1.11/taskArtifacts/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.gradle/1.11/taskArtifacts/fileSnapshots.bin" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.gradle/1.11/taskArtifacts/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.gradle/1.11/taskArtifacts/taskArtifacts.bin" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.gradle/1.11/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/src/main/java/net/wittig/monster/controller/EncounterController.java" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/src/main/java/net/wittig/monster/controller/EncounterController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/wittig/monster/controller/EncounterController.java" afterPath="$PROJECT_DIR$/src/main/java/net/wittig/monster/controller/EncounterController.java" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__aopalliance_aopalliance_1_0.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__aopalliance_aopalliance_1_0.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__ch_qos_logback_logback_core_1_1_2.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__ch_qos_logback_logback_core_1_1_2.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__com_fasterxml_classmate_1_0_0.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__com_fasterxml_classmate_1_0_0.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_3_0.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_3_0.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__com_google_code_gson_gson_2_3_1.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__com_google_code_gson_gson_2_3_1.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__commons_logging_commons_logging_1_1_3.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__commons_logging_commons_logging_1_1_3.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__javax_validation_validation_api_1_1_0_Final.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__javax_validation_validation_api_1_1_0_Final.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_core_7_0_56.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__org_apache_tomcat_embed_tomcat_embed_core_7_0_56.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__org_codehaus_groovy_groovy_2_3_8.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__org_codehaus_groovy_groovy_2_3_8.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__org_hibernate_hibernate_validator_5_0_3_Final.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__org_hibernate_hibernate_validator_5_0_3_Final.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__org_jboss_logging_jboss_logging_3_1_1_GA.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__org_jboss_logging_jboss_logging_3_1_1_GA.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__org_slf4j_slf4j_api_1_7_7.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__org_slf4j_slf4j_api_1_7_7.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__org_yaml_snakeyaml_1_13.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/libraries/Gradle__org_yaml_snakeyaml_1_13.xml" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/src/main/java/net/wittig/monster/controller/MonsterController.java" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/src/main/java/net/wittig/monster/controller/MonsterController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/net/wittig/monster/controller/MonsterController.java" afterPath="$PROJECT_DIR$/src/main/java/net/wittig/monster/controller/MonsterController.java" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/dataSources.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/static/encounter.html" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/static/encounter.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/encounter.html" afterPath="$PROJECT_DIR$/static/encounter.html" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/static/js/encounter.js" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/static/js/encounter.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/encounter.js" afterPath="$PROJECT_DIR$/static/js/encounter.js" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/gradle.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/misc.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/vcs.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/workspace.xml" afterPath="$USER_HOME$/windows-idea-projects/monster-tracker-2/.idea/workspace.xml" />
     </list>
     <ignored path="monster-tracker-2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -213,8 +100,8 @@
       <file leaf-file-name="encounter.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/encounter.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6016043" vertical-offset="47" max-vertical-offset="1456">
-              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.6871658" vertical-offset="47" max-vertical-offset="1456">
+              <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -1237,7 +1124,8 @@
     <MESSAGE value="renaming stuff" />
     <MESSAGE value="filling in the monster view on encounter" />
     <MESSAGE value="cleaning up schema and adding tables to support encounter" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleaning up schema and adding tables to support encounter" />
+    <MESSAGE value="removing stuff that should be ignored" />
+    <option name="LAST_COMMIT_MESSAGE" value="removing stuff that should be ignored" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1608,8 +1496,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/encounter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6016043" vertical-offset="47" max-vertical-offset="1456">
-          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.6871658" vertical-offset="47" max-vertical-offset="1456">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
           <folding />
         </state>
       </provider>
