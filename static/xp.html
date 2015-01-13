@@ -19,6 +19,14 @@
 </head>
 <body>
 
+<nav>
+    <a href="monster.html">add new monster type</a>
+    |
+    <a href="xp.html">calculate xp</a>
+    |
+    <a href="encounter.html">add new encounter</a>
+</nav>
+
 <div id="monster-type-container">
     <label for="monstertype">Monster Type:</label>
     <select id="monstertype"></select>
@@ -44,12 +52,13 @@
     $(function() {
         $.getJSON("controller/monsters", function(data) {
             $.each(data, function() {
-                var template = "<option value='{{MonsterName}}'>{{MonsterName}}</option>";
+                var template = "<option value='{{id}}'>{{name}}</option>";
                 var newOption = $(Mustache.render(template, this));
                 newOption.data(this);
                 $("#monstertype").append(newOption);
                 $('.hitpoints').change();
             });
+            $('body').on('change', '.hitpoints, #monstertype', calculateXp);
         });
 
         $("#addHitPointEntries").click(function() {
@@ -59,7 +68,6 @@
             }
             $input.children('input').change();
         });
-        $('body').on('change', '.hitpoints, #monstertype', calculateXp);
     });
 
     var calculateXp = function () {
@@ -68,8 +76,8 @@
         $.ajax({
             url: 'controller/base-xp',
             data: {
-                hitDice: monsterType.HD,
-                modifier: monsterType.HitModifier
+                'hitDice': monsterType.hit_dice,
+                'modifier': monsterType.hit_die_modifier
             },
             dataType: 'json',
             success: function (data) {
@@ -79,12 +87,12 @@
                     totalHitPoints += Number($(this).val());
                 });
                 var xpData = data[0];
-                var baseXp = xpData.BasicXP;
-                var hitPointXp = xpData.HitPointXP;
-                var specialAbilityCount = monsterType.NumSpecialAbilities;
-                var specialAbilityXp = xpData.SpecialAbilityXP;
-                var exceptionalAbilityCount = monsterType.NumExceptionalAbilities;
-                var exceptionalAbilityXp = xpData.ExceptionalAbilityXP;
+                var baseXp = xpData.basic_xp;
+                var hitPointXp = xpData.hit_point_xp;
+                var specialAbilityCount = monsterType.special_ability_count;
+                var specialAbilityXp = xpData.special_ability_xp;
+                var exceptionalAbilityCount = monsterType.exceptional_ability_count;
+                var exceptionalAbilityXp = xpData.exceptional_ability_xp;
                 var calculatedXp = (totalHitPoints * hitPointXp) + monsterCount * (baseXp + (specialAbilityCount * specialAbilityXp) + (exceptionalAbilityCount * exceptionalAbilityXp));
                 $('#calculatedXp').html(calculatedXp);
             }

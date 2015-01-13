@@ -2,7 +2,7 @@ package net.wittig.monster.controller;
 
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -33,15 +33,19 @@ public class MonsterController {
     @RequestMapping(value = "monster", method = RequestMethod.POST)
     public String saveMonster(@RequestParam Map<String, String> params) {
 
-        System.out.println(params);
-        params.put("weaponAttack", params.containsKey("weaponAttack") ? "1" : "0");
-        jdbcOperations.update("insert into monster_type" +
-                        "(name, attack_count, weapon_attack_flag, damage_per_attack, hit_dice, hit_die_modifier, armor_class, size, movement, treasure," +
-                        " special_ability_count, special_abilities, exceptional_ability_count, exceptional_abilities, intelligence, alignment, rarity)" +
-                        "values (:name, :numAttacks, :weaponAttack, :damagePerAttack, :HD, :hitModifier, :AC, :size, :movement, :treasure," +
-                        " :numSpecialAbilities, :specialAbilities, :numExceptionalAbilities, :exceptionalAbilities, :intelligence, :alignment, :rarity)",
-                params);
-        return "monster";
+        try {
+            System.out.println(params);
+            params.put("weaponAttack", params.containsKey("weaponAttack") ? "1" : "0");
+            jdbcOperations.update("insert into monster_type" +
+                            "(name, attack_count, weapon_attack_flag, damage_per_attack, hit_dice, hit_die_modifier, armor_class, size, movement, treasure," +
+                            " special_ability_count, special_abilities, exceptional_ability_count, exceptional_abilities, intelligence, alignment, rarity, notes)" +
+                            "values (:name, :numAttacks, :weaponAttack, :damagePerAttack, :HD, :hitModifier, :AC, :size, :movement, :treasure," +
+                            " :numSpecialAbilities, :specialAbilities, :numExceptionalAbilities, :exceptionalAbilities, :intelligence, :alignment, :rarity, :notes)",
+                    params);
+            return params.get("name") + " saved successfully";
+        } catch (DataAccessException e) {
+            return e.getMessage();
+        }
     }
 
     @RequestMapping(value = "monster", method = RequestMethod.GET)
