@@ -26,6 +26,11 @@ public class EncounterMonsterType {
         return encounterMonsters;
     }
 
+    public void setEncounterMonsters(List<EncounterMonster> encounterMonsters) {
+
+        this.encounterMonsters = encounterMonsters;
+    }
+
     public void addEncounterMonsters(EncounterMonster...encounterMonsters) {
 
         this.encounterMonsters.addAll(Arrays.asList(encounterMonsters));

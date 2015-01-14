@@ -14,7 +14,9 @@ $(function() {
         var $container = $(this).parents('.monster-type-container').find(".monsters-hp-container");
         $container.empty();
         for (var i = 0; i < $(this).val(); i++) {
-            $container.append("<div class='monster-hp-container'><input type='number' name='monsters["+i+"][hitPoints]' class='hitpoints' value='1' /> HP <input type='checkbox' name='monsters["+i+"][dead]' />Dead</div>");
+            $container.append("<div class='monster-hp-container'>" +
+            "<input type='number' name='encounterMonsters["+i+"][hitPoints]' class='hitpoints' value='1' /> HP " +
+            "<input type='checkbox' name='encounterMonsters["+i+"][dead]' />Dead</div>");
         }
         $container.children('input').change();
     })
@@ -48,35 +50,44 @@ $(function() {
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json',
-            data: $("#encounter-form").serializeJSON()
-        });
-
-        var encounterId = $("#encounter-id").val();
-        $.ajax({
-            url: 'controller/encounter/'+encounterId+'/monster-type',
-            type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: $("form.monster-type-container:not(template)").serializeJSON(),
+            data: $("#encounter-form").serializeJSON(),
             complete: function(data) {
-                alert(data);
+
+                var encounterId = Number(data.responseJSON);
+                $("#encounter-id").val(encounterId);
+                $("form.monster-type-container:not(.template)").each(function() {
+                    var monsterTypeJson = $(this).serializeJSON();
+                    $.ajax({
+                        url: 'controller/encounter/'+encounterId+'/monster-type',
+                        type: 'POST',
+                        dataType: 'json',
+                        contentType: 'application/json',
+                        data: monsterTypeJson,
+                        complete: function(data) {
+                            alert(data);
+                        }
+                    });
+                });
+
             }
         });
+
+
     });
 
-    $("body").on('submit', 'form.monster-type-container:not(.template)', function(event) {
-        event.preventDefault();
-        $.ajax({
-            url: 'controller/encounter',
-            type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: $(this).serializeJSON(),
-            complete: function(data) {
-                alert(data);
-            }
-        });
-    });
+    //$("body").on('submit', 'form.monster-type-container:not(.template)', function(event) {
+    //    event.preventDefault();
+    //    $.ajax({
+    //        url: 'controller/encounter',
+    //        type: 'POST',
+    //        dataType: 'json',
+    //        contentType: 'application/json',
+    //        data: $(this).serializeJSON(),
+    //        complete: function(data) {
+    //            alert(data);
+    //        }
+    //    });
+    //});
 });
 
 var calculateXp = function () {
