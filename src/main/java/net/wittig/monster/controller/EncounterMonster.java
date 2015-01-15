@@ -3,7 +3,7 @@ package net.wittig.monster.controller;
 public class EncounterMonster {
 
     private Integer hitPoints;
-    private Boolean dead;
+    private boolean dead;
 
     public Integer getHitPoints() {
         return hitPoints;

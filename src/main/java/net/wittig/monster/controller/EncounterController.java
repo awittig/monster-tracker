@@ -16,13 +16,6 @@ public class EncounterController {
     @Autowired
     private JdbcTemplate jdbcOperations;
 
-    @RequestMapping("/controller/encounter")
-    public String test() {
-
-        System.out.println("get");
-        return "hello, monsters";
-    }
-
     @RequestMapping(value="/controller/encounter", method=RequestMethod.POST)
     public HttpEntity<Number> post(@RequestBody Encounter encounter) {
 
@@ -39,8 +32,7 @@ public class EncounterController {
     public String post(@RequestBody Encounter encounter, @PathVariable Integer encounterId) {
 
         System.out.println("post");
-        MapSqlParameterSource parameterSource = new MapSqlParameterSource().addValue("name", encounter.getName()).addValue("id", encounterId);
-        jdbcOperations.update("update encounter set name=:name where id=:id", parameterSource);
+        jdbcOperations.update("update encounter set name=? where id=?", encounter.getName(), encounterId);
         return "success";
     }
 
@@ -48,16 +40,13 @@ public class EncounterController {
     public String post(@RequestBody(required = false) EncounterMonsterType encounterMonsterType, @PathVariable Integer encounterId) {
 
         deleteEncounterMonsterTypes(encounterId);
-        SimpleJdbcInsert insert = new SimpleJdbcInsert(jdbcOperations)
-                .withTableName("encounter_monster_type")
-                .usingColumns("encounter_id, monster_type_id, strategy, notes");
-        insertEncounterMonsterTypes(encounterId, insert, encounterMonsterType);
+        insertEncounterMonsterTypes(encounterId, encounterMonsterType);
         deleteEncounterMonsters(encounterId, encounterMonsterType);
         for (EncounterMonster encounterMonster : encounterMonsterType.getEncounterMonsters()) {
             insertEncounterMonster(encounterId, encounterMonsterType, encounterMonster);
         }
         System.out.println("post");
-        return "hello, monsters";
+        return "saved monster types";
     }
 
     private void insertEncounterMonster(Integer encounterId, EncounterMonsterType encounterMonsterType, EncounterMonster encounterMonster) {
@@ -68,7 +57,7 @@ public class EncounterController {
                 .addValue("deadFlag", encounterMonster.isDead());
         new SimpleJdbcInsert(jdbcOperations)
                 .withTableName("encounter_monster")
-                .usingColumns("encounter_id, monster_type_id, hit_points, dead_flag")
+                .usingColumns("encounter_id", "monster_type_id", "hit_points", "dead_flag")
                 .execute(params);
     }
 
@@ -76,19 +65,22 @@ public class EncounterController {
         return jdbcOperations.update("delete from encounter_monster_type where encounter_id = ?", encounterId);
     }
 
-    private void insertEncounterMonsterTypes(Integer encounterId, SimpleJdbcInsert insert, EncounterMonsterType encounterMonsterType) {
+    private void insertEncounterMonsterTypes(Integer encounterId, EncounterMonsterType encounterMonsterType) {
         SqlParameterSource parameterSource = new MapSqlParameterSource()
                 .addValue("encounterId", encounterId)
                 .addValue("monsterTypeId", encounterMonsterType.getMonsterType().getId())
                 .addValue("strategy", encounterMonsterType.getStrategy())
-                .addValue("notes", encounterMonsterType.getNotes());
-        insert.execute(parameterSource);
+                .addValue("notes", encounterMonsterType.getNotes())
+                .addValue("treasure", encounterMonsterType.getTreasure());
+
+        new SimpleJdbcInsert(jdbcOperations)
+                .withTableName("encounter_monster_type")
+                .usingColumns("encounter_id", "monster_type_id", "strategy", "notes", "treasure")
+                .execute(parameterSource);
     }
 
     private void deleteEncounterMonsters(Integer encounterId, EncounterMonsterType encounterMonsterType) {
-        SqlParameterSource deleteParams = new MapSqlParameterSource()
-                .addValue("encounterId", encounterId)
-                .addValue("monsterTypeId", encounterMonsterType.getMonsterType().getId());
-        jdbcOperations.update("delete from encounter_monster where encounter_id = :encounterId and monster_type_id = :monsterTypeId", deleteParams);
+        jdbcOperations.update("delete from encounter_monster where encounter_id = ? and monster_type_id = ?",
+                encounterId, encounterMonsterType.getMonsterType().getId());
     }
 }

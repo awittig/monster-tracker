@@ -45,8 +45,12 @@ $(function() {
     $('#save-button').click(function() {
         //$("form.monster-type-container:not(.template)").submit();
         //event.preventDefault();
+        var url = 'controller/encounter';
+        if ($("#encounter-id").val()) {
+            url += '/' + $("#encounter-id").val()
+        }
         $.ajax({
-            url: 'controller/encounter',
+            url: url,
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json',
@@ -64,7 +68,7 @@ $(function() {
                         contentType: 'application/json',
                         data: monsterTypeJson,
                         complete: function(data) {
-                            alert(data);
+                            alert(data.responseText);
                         }
                     });
                 });

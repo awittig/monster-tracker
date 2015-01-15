@@ -10,6 +10,7 @@ public class EncounterMonsterType {
     private List<EncounterMonster> encounterMonsters = new ArrayList<>();
     private String strategy;
     private String notes;
+    private String treasure;
 
     public MonsterType getMonsterType() {
 
@@ -50,5 +51,15 @@ public class EncounterMonsterType {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public String getTreasure() {
+
+        return treasure;
+    }
+
+    public void setTreasure(String treasure) {
+
+        this.treasure = treasure;
     }
 }
