@@ -1,7 +1,7 @@
 package net.wittig.monster.controller;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public class EncounterMonsterType {
@@ -32,9 +32,9 @@ public class EncounterMonsterType {
         this.encounterMonsters = encounterMonsters;
     }
 
-    public void addEncounterMonsters(EncounterMonster...encounterMonsters) {
+    public void addEncounterMonsters(Collection<EncounterMonster> encounterMonsters) {
 
-        this.encounterMonsters.addAll(Arrays.asList(encounterMonsters));
+        this.encounterMonsters.addAll(encounterMonsters);
     }
 
     public String getStrategy() {

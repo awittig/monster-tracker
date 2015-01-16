@@ -18,6 +18,6 @@ public class EncounterMonster {
     }
 
     public void setDead(Boolean dead) {
-        this.dead = dead;
+        this.dead = dead != null && dead;
     }
 }

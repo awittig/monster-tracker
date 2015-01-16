@@ -9,6 +9,14 @@ $(function() {
         });
     });
 
+    $.getJSON("controller/encounters", function(data) {
+        var template = "<li><a href='controller/encounter/{{id}}'>{{name}}</a></li>";
+        $.each(data, function() {
+            var newItem = $(Mustache.render(template, this));
+            $("#encounterList").append(newItem);
+        })
+    });
+
     $("body")
     .on('change', '.monster-count', function() {
         var $container = $(this).parents('.monster-type-container').find(".monsters-hp-container");
@@ -20,7 +28,6 @@ $(function() {
         }
         $container.children('input').change();
     })
-    //.on('change', '.hitpoints, .monstertype', calculateXp)
     .on('change', '.monstertype', function() {
         var $data = $(this).find('option:selected').data();
         var $container = $(this).parents('.monster-type-container');
@@ -33,6 +40,53 @@ $(function() {
         $container.find('.size').html($data.size);
         $container.find('.movement').html($data.movement);
         $container.find('.treasure').html($data.treasure);
+        $container.find('.damagePerAttack').html($data.damage_per_attack);
+        $container.find('.notes').html($data.notes);
+        $container.find('.specialAbilities').html($data.special_abilities);
+        $container.find('.exceptionalAbilities').html($data.exceptional_abilities);
+    })
+    .on('click', '#encounterList a', function(event) {
+        event.preventDefault();
+        var url = $(this).attr('href');
+        $.getJSON(url, function(encounter) {
+            $('.monster-type-container:not(.template)').remove();
+            $('#encounter-name').val(encounter.name);
+            $('#encounter-id').val(encounter.id);
+            for (encounterMonsterType of encounter.encounterMonsterTypes) {
+                var $newContainer = $('.monster-type-container.template').clone(true);
+                $newContainer.removeClass('template');
+                $('body').append($newContainer);
+                $newContainer.find('select.monstertype').val(encounterMonsterType.monsterType.id);
+                var $encounterMonsterContainer = $newContainer.find(".monsters-hp-container");
+                $encounterMonsterContainer.empty();
+                for (var i = 0; i < encounterMonsterType.encounterMonsters.length; i++) {
+                    var encounterMonster = encounterMonsterType.encounterMonsters[i];
+                    $encounterMonsterContainer.append("<div class='monster-hp-container'>" +
+                    "<input type='number' name='encounterMonsters["+i+"][hitPoints]' class='hitpoints' value='"+encounterMonster.hitPoints+"' /> HP " +
+                    "<input type='checkbox' name='encounterMonsters["+i+"][dead]' />Dead</div>");
+                }
+                $newContainer.find('.monster-count').val(encounterMonsterType.encounterMonsters.length);
+                $newContainer.find('.strategy').val(encounterMonsterType.strategy);
+                $newContainer.find('.treasureInput').val(encounterMonsterType.treasure);
+            }
+            $('.monstertype').change();
+
+        });
+    })
+    .on('click', '#delete-button', function(event) {
+        if (confirm("Really delete this encounter?")) {
+            $.ajax({
+                url: 'controller/encounter/' + $("#encounter-id").val(),
+                type: 'DELETE',
+                success: function(data) {
+                    if (data == 'success') {
+                        alert('Deleted.');
+                    } else {
+                        alert('Failed to delete.');
+                    }
+                }
+            });
+        }
     });
     $('.monster-count').change();
 
