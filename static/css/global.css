@@ -6,7 +6,7 @@ body {
 }
 input, textarea {
     margin-bottom:5px;
-    font-size:16px;
+    font-size:12px;
     padding:5px;
     font-family:'Libre Baskerville', serif;
 }
@@ -15,7 +15,7 @@ select {
     font-family:'Libre Baskerville', serif;
 }
 input[type='number'] {
-    width:50px;
+    width:35px;
 }
 input[type='button'] {
     font-size:14px;

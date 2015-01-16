@@ -9,13 +9,7 @@ $(function() {
         });
     });
 
-    $.getJSON("controller/encounters", function(data) {
-        var template = "<li><a href='controller/encounter/{{id}}'>{{name}}</a></li>";
-        $.each(data, function() {
-            var newItem = $(Mustache.render(template, this));
-            $("#encounterList").append(newItem);
-        })
-    });
+    loadEncounterMenu();
 
     $("body")
     .on('change', '.monster-count', function() {
@@ -45,9 +39,9 @@ $(function() {
         $container.find('.specialAbilities').html($data.special_abilities);
         $container.find('.exceptionalAbilities').html($data.exceptional_abilities);
     })
-    .on('click', '#encounterList a', function(event) {
+    .on('change', '#encounterList', function(event) {
         event.preventDefault();
-        var url = $(this).attr('href');
+        var url = "controller/encounter/" + $(this).val();
         $.getJSON(url, function(encounter) {
             $('.monster-type-container:not(.template)').remove();
             $('#encounter-name').val(encounter.name);
@@ -55,15 +49,16 @@ $(function() {
             for (encounterMonsterType of encounter.encounterMonsterTypes) {
                 var $newContainer = $('.monster-type-container.template').clone(true);
                 $newContainer.removeClass('template');
-                $('body').append($newContainer);
+                $('#encounterContainer').append($newContainer);
                 $newContainer.find('select.monstertype').val(encounterMonsterType.monsterType.id);
                 var $encounterMonsterContainer = $newContainer.find(".monsters-hp-container");
                 $encounterMonsterContainer.empty();
                 for (var i = 0; i < encounterMonsterType.encounterMonsters.length; i++) {
                     var encounterMonster = encounterMonsterType.encounterMonsters[i];
+                    var checked = encounterMonster.dead ? 'checked="checked"' : '';
                     $encounterMonsterContainer.append("<div class='monster-hp-container'>" +
                     "<input type='number' name='encounterMonsters["+i+"][hitPoints]' class='hitpoints' value='"+encounterMonster.hitPoints+"' /> HP " +
-                    "<input type='checkbox' name='encounterMonsters["+i+"][dead]' />Dead</div>");
+                    "<input type='checkbox' name='encounterMonsters["+i+"][dead]' "+checked+" />Dead</div>");
                 }
                 $newContainer.find('.monster-count').val(encounterMonsterType.encounterMonsters.length);
                 $newContainer.find('.strategy').val(encounterMonsterType.strategy);
@@ -80,7 +75,7 @@ $(function() {
                 type: 'DELETE',
                 success: function(data) {
                     if (data == 'success') {
-                        alert('Deleted.');
+                        loadEncounterMenu();
                     } else {
                         alert('Failed to delete.');
                     }
@@ -93,7 +88,7 @@ $(function() {
     $('#add-new-monster-type').click(function() {
         var $newContainer = $('.monster-type-container.template').clone(true);
         $newContainer.removeClass('template');
-        $('body').append($newContainer);
+        $('#encounterContainer').append($newContainer);
     });
 
     $('#save-button').click(function() {
@@ -180,3 +175,16 @@ var calculateXp = function () {
             $('#calculatedXp').html(calculatedXp);
         });
 };
+
+var loadEncounterMenu = function() {
+
+    $.getJSON("controller/encounters", function(data) {
+        var template = "<option value='{{id}}'>{{name}}</option>";
+        $("#encounterList").empty();
+        $("#encounterList").append("<option value=''>Create new encounter...</option>");
+        $.each(data, function() {
+            var newItem = $(Mustache.render(template, this));
+            $("#encounterList").append(newItem);
+        })
+    });
+}
