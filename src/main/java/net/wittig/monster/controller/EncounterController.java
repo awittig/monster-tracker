@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,9 @@ public class EncounterController {
 
     @Autowired
     private JdbcTemplate jdbcOperations;
+
+    @Autowired
+    private NamedParameterJdbcOperations namedParameterJdbcOperations;
 
     @RequestMapping(value = "controller/encounters", method = RequestMethod.GET)
     public HttpEntity<List<Encounter>> getAll() {
@@ -85,11 +89,11 @@ public class EncounterController {
     }
 
     @RequestMapping(value="/controller/encounter/{encounterId}", method=RequestMethod.POST)
-    public String post(@RequestBody Encounter encounter, @PathVariable Integer encounterId) {
+    public HttpEntity<Number> post(@RequestBody Encounter encounter, @PathVariable Integer encounterId) {
 
         System.out.println("post");
         jdbcOperations.update("update encounter set name=? where id=?", encounter.getName(), encounterId);
-        return "success";
+        return ResponseEntity.ok(encounterId);
     }
 
     @RequestMapping(value="/controller/encounter/{encounterId}/monster-type", method=RequestMethod.POST)
@@ -128,11 +132,8 @@ public class EncounterController {
                 .addValue("strategy", encounterMonsterType.getStrategy())
                 .addValue("notes", encounterMonsterType.getNotes())
                 .addValue("treasure", encounterMonsterType.getTreasure());
-
-        new SimpleJdbcInsert(jdbcOperations)
-                .withTableName("encounter_monster_type")
-                .usingColumns("encounter_id", "monster_type_id", "strategy", "notes", "treasure")
-                .execute(parameterSource);
+        namedParameterJdbcOperations.update("replace into encounter_monster_type (encounter_id, monster_type_id, strategy, notes, treasure)" +
+                " values (:encounterId, :monsterTypeId, :strategy, :notes, :treasure)", parameterSource);
     }
 
     private void deleteEncounterMonsters(Integer encounterId, EncounterMonsterType encounterMonsterType) {
