@@ -4,28 +4,28 @@
 
     app.controller('EncounterController', ['$http', function($http) {
         var self = this;
+
         this.encounters = [];
+
         $http.get('controller/encounters').success(function(data){
             self.encounters = data;
         });
 
-        this.selectedType = 0;
-        this.monsterCount = 1;
+        this.totalXp = 0;
 
-        this.encounter = {};
+        this.calculateXp = function() {
 
-        this.loadEncounter = function() {
-            $http.get('controller/encounter/'+self.selectedType.id).success(function(data) {
-                self.encounter = data;
-
-                for (var encounterMonsterType in self.encounter.encounterMonsterTypes) {
-                    $http.get('controller/monster-type')
-
+            self.totalXp = 0;
+            for (var i=0; i < self.encounters.length; i++) {
+                var encounter = self.encounters[i];
+                if (encounter.selected) {
+                    $http.get('controller/encounter/'+encounter.id+'/xp').success(function(data) {
+                        self.totalXp += data;
+                    });
                 }
-
-
-            });
+            }
         }
+
     }]);
 
 })();

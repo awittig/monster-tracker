@@ -23,17 +23,18 @@
     <a href="encounter.html">add new encounter</a>
 </nav>
 
-<div id="encounterContainer">
-    <label for="encounterSelect">Encounter</label>
-    <select id="encounterSelect"
-            ng-model="encounterCtrl.selectedType"
-            ng-options="encounter.name for encounter in encounterCtrl.encounters"
-            ng-change="encounterCtrl.loadEncounter()">
-    </select>
-</div>
-{{encounterCtrl.selectedType.name}}
+{{encounterCtrl.totalXp}}
 
-{{encounterCtrl.encounter.encounterMonsterTypes}}
+<div ng-repeat="encounter in encounterCtrl.encounters">
+
+    <input type="checkbox"
+           name="selectedEncounters[]"
+           value="{{encounter.id}}"
+           id="encounter{{encounter.id}}"
+           ng-model="encounter.selected"
+           ng-change="encounterCtrl.calculateXp()" />
+    <label for="encounter{{encounter.id}}">{{encounter.name}}</label>
+</div>
 
 </body>
 </html>
