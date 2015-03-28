@@ -1,15 +1,12 @@
 package net.wittig.monster.controller;
 
 import com.google.gson.Gson;
+import net.wittig.monster.domain.Experience;
+import net.wittig.monster.service.ExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,10 +19,23 @@ public class MonsterController {
     @Autowired
     private NamedParameterJdbcOperations jdbcOperations;
 
+    @Autowired
+    ExperienceService experienceService;
+
     @RequestMapping(value="monsters", method=RequestMethod.GET)
     public String monsters() {
 
         List<Map<String, Object>> monsters = jdbcOperations.queryForList("select * from monster_type", new HashMap<String,Object>());
+        Gson gson = new Gson();
+        return gson.toJson(monsters);
+    }
+
+    @RequestMapping(value="monster/{id}", method=RequestMethod.GET)
+    public String monsters(@PathVariable Long id) {
+
+        HashMap<String, Object> paramMap = new HashMap<>();
+        paramMap.put("id", id);
+        List<Map<String, Object>> monsters = jdbcOperations.queryForList("select * from monster_type where id = :id", paramMap);
         Gson gson = new Gson();
         return gson.toJson(monsters);
     }
@@ -57,18 +67,7 @@ public class MonsterController {
     @RequestMapping(value = "base-xp", method = RequestMethod.GET)
     public String baseXp(@RequestParam Integer hitDice, @RequestParam Integer modifier) {
 
-        String query = "select e.* from hit_dice_range hdr" +
-                " join experience e" +
-                "   on hdr.id = e.hit_dice_range_id" +
-                " where (hdr.min_hit_die < :hitDice and :hitDice < hdr.max_hit_die)" +
-                "   or (:hitDice = hdr.min_hit_die and :mod >= hdr.min_hit_die_modifier and (:hitDice < hdr.max_hit_die or (:hitDice = hdr.max_hit_die and :mod <= hdr.max_hit_die_modifier)))" +
-                "   or (:hitDice = hdr.max_hit_die and :mod <= hdr.max_hit_die_modifier and (:hitDice > hdr.min_hit_die or (:hitDice = hdr.min_hit_die and :mod >= hdr.min_hit_die_modifier)))";
-
-        SqlParameterSource params = new MapSqlParameterSource()
-                .addValue("hitDice", hitDice)
-                .addValue("mod", modifier);
-
-        List<Map<String, Object>> experience = jdbcOperations.queryForList(query, params);
+        List<Experience> experience = experienceService.baseXp(hitDice, modifier);
         return new Gson().toJson(experience);
     }
 }

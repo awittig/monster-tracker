@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="encounters">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css' />
+    <link rel='stylesheet' type='text/css' href='css/global.css' />
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.8.1/mustache.min.js"></script>
+    <script src="js/jquery.serialize-object.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.min.js"></script>
+    <script src="js/encounters-app.js"></script>
+    <style>
+    </style>
+</head>
+<body ng-controller="EncounterController as encounterCtrl">
+
+<nav>
+    <a href="monster.html">add new monster type</a>
+    |
+    <a href="xp.html">calculate xp</a>
+    |
+    <a href="encounter.html">add new encounter</a>
+</nav>
+
+<div id="encounterContainer">
+    <label for="encounterSelect">Encounter</label>
+    <select id="encounterSelect"
+            ng-model="encounterCtrl.selectedType"
+            ng-options="encounter.name for encounter in encounterCtrl.encounters"
+            ng-change="encounterCtrl.loadEncounter()">
+    </select>
+</div>
+{{encounterCtrl.selectedType.name}}
+
+{{encounterCtrl.encounter.encounterMonsterTypes}}
+
+</body>
+</html>

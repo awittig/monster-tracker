@@ -1,5 +1,6 @@
 package net.wittig.monster.controller;
 
+import net.wittig.monster.service.ExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,9 @@ public class EncounterController {
 
     @Autowired
     private NamedParameterJdbcOperations namedParameterJdbcOperations;
+
+    @Autowired
+    private ExperienceService experienceService;
 
     @RequestMapping(value = "controller/encounters", method = RequestMethod.GET)
     public HttpEntity<List<Encounter>> getAll() {
@@ -139,5 +143,12 @@ public class EncounterController {
     private void deleteEncounterMonsters(Integer encounterId, EncounterMonsterType encounterMonsterType) {
         jdbcOperations.update("delete from encounter_monster where encounter_id = ? and monster_type_id = ?",
                 encounterId, encounterMonsterType.getMonsterType().getId());
+    }
+
+    @RequestMapping(value="/controller/encounter/{encounterId}/xp", method=RequestMethod.GET)
+    public ResponseEntity<Integer> calculateEncounterXp(@PathVariable Long encounterId) {
+
+        Integer xp = experienceService.calculateEncounterXp(encounterId);
+        return ResponseEntity.ok(xp);
     }
 }
