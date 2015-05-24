@@ -14,8 +14,6 @@ import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 @RestController
@@ -43,19 +41,16 @@ public class EncounterController {
         Encounter encounter = jdbcOperations.queryForObject(
                 "select id, name from encounter where id=?", BeanPropertyRowMapper.newInstance(Encounter.class), encounterId);
 
-        RowMapper<EncounterMonsterType> encounterMonsterTypeRowMapper = new RowMapper<EncounterMonsterType>() {
-            @Override
-            public EncounterMonsterType mapRow(ResultSet rs, int rowNum) throws SQLException {
+        RowMapper<EncounterMonsterType> encounterMonsterTypeRowMapper = (rs, rowNum) -> {
 
-                EncounterMonsterType encounterMonsterType = new EncounterMonsterType();
-                MonsterType monsterType = new MonsterType();
-                monsterType.setId(rs.getInt("monster_type_id"));
-                encounterMonsterType.setNotes(rs.getString("notes"));
-                encounterMonsterType.setStrategy(rs.getString("strategy"));
-                encounterMonsterType.setTreasure(rs.getString("treasure"));
-                encounterMonsterType.setMonsterType(monsterType);
-                return encounterMonsterType;
-            }
+            EncounterMonsterType encounterMonsterType = new EncounterMonsterType();
+            MonsterType monsterType = new MonsterType();
+            monsterType.setId(rs.getInt("monster_type_id"));
+            encounterMonsterType.setNotes(rs.getString("notes"));
+            encounterMonsterType.setStrategy(rs.getString("strategy"));
+            encounterMonsterType.setTreasure(rs.getString("treasure"));
+            encounterMonsterType.setMonsterType(monsterType);
+            return encounterMonsterType;
         };
         List<EncounterMonsterType> encounterMonsterTypes = jdbcOperations.query(
                 "select monster_type_id, strategy, notes, treasure from encounter_monster_type where encounter_id = ?", encounterMonsterTypeRowMapper, encounterId);
@@ -83,7 +78,6 @@ public class EncounterController {
     @RequestMapping(value = "/controller/encounter", method = RequestMethod.POST)
     public HttpEntity<Number> post(@RequestBody Encounter encounter) {
 
-        System.out.println("post");
         Number id = new SimpleJdbcInsert(jdbcOperations)
                 .withTableName("encounter")
                 .usingColumns("name")
@@ -95,7 +89,6 @@ public class EncounterController {
     @RequestMapping(value="/controller/encounter/{encounterId}", method=RequestMethod.POST)
     public HttpEntity<Number> post(@RequestBody Encounter encounter, @PathVariable Integer encounterId) {
 
-        System.out.println("post");
         jdbcOperations.update("update encounter set name=? where id=?", encounter.getName(), encounterId);
         return ResponseEntity.ok(encounterId);
     }
