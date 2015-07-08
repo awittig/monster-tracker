@@ -6,7 +6,11 @@ import net.wittig.monster.service.ExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +29,7 @@ public class MonsterController {
     @RequestMapping(value="monsters", method=RequestMethod.GET)
     public String monsters() {
 
-        List<Map<String, Object>> monsters = jdbcOperations.queryForList("select * from monster_type", new HashMap<String,Object>());
+        List<Map<String, Object>> monsters = jdbcOperations.queryForList("select * from monster_type", new HashMap<>());
         Gson gson = new Gson();
         return gson.toJson(monsters);
     }

@@ -11,19 +11,22 @@
             self.encounters = data;
         });
 
-        this.totalXp = 0;
+        this.selectedEncounter = {};
 
-        this.calculateXp = function() {
+        this.encounterDetail = {};
 
-            self.totalXp = 0;
-            for (var i=0; i < self.encounters.length; i++) {
-                var encounter = self.encounters[i];
-                if (encounter.selected) {
-                    $http.get('controller/encounter/'+encounter.id+'/xp').success(function(data) {
-                        self.totalXp += data;
-                    });
-                }
-            }
+        this.viewEncounter = function() {
+
+            $http.get('controller/encounter/'+self.selectedEncounter.id).success(function(data){
+                self.encounterDetail = data;
+
+                $.each(self.encounterDetail.encounterMonsterTypes, function(index, encounterMonsterType) {
+                    $http.get('controller/monster/'+encounterMonsterType.monsterType.id).success(function(data) {
+                        self.encounterDetail.monsterTypes[index] = data;
+                    })
+                });
+
+            });
         }
 
     }]);
