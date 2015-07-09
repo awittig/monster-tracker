@@ -88,7 +88,11 @@
             with {{encounterMonsterType.monsterType.damagePerAttack}} damage per attack
         </div>
         <div class="stats-group">
-            <span class="monsters-hp-container"></span>
+            <div class="monster-hp-container"
+                 ng-repeat="monster in encounterMonsterType.encounterMonsters">
+                <input class="monster-hp" type="number" ng-model="monster.hitPoints"/> of
+                {{monster.hitPoints}} HP
+            </div>
         </div>
         <div class="stats-group">
             <label>Strategy</label>
