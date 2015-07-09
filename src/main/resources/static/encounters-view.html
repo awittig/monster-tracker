@@ -75,41 +75,43 @@
 
 </div>
 
-<div >
+<div>
 
-    <form class="monster-type-container" ng-repeat="monsterType in encounterViewCtrl.encounterDetail.encounterMonsterTypes">
+    <form class="monster-type-container"
+          ng-repeat="encounterMonsterType in encounterViewCtrl.encounterDetail.encounterMonsterTypes">
         <div class="stats-group">
-            <span class="hitdie">{{monster</span><span class="hitdie-modifier"></span>HD
-            <span class="armor-class"></span>AC
+            <span class="hitdie">{{encounterMonsterType.monsterType.hitDice}}+{{encounterMonsterType.monsterType.hitDieModifier}}</span>HD
+            {{encounterMonsterType.monsterType.armorClass}}AC
         </div>
         <div class="stats-group">
-            <span class="num-attacks"></span> attack(s) with <span class="damagePerAttack"></span> damage per attack
+            {{encounterMonsterType.monsterType.attackCount}} attack(s)
+            with {{encounterMonsterType.monsterType.damagePerAttack}} damage per attack
         </div>
         <div class="stats-group">
             <span class="monsters-hp-container"></span>
         </div>
         <div class="stats-group">
             <label>Strategy</label>
-            <textarea class="strategy" name="strategy"></textarea>
+            {{encounterMonsterType.strategy}}
         </div>
         <div class="stats-group">
-            Treasure: <span class="treasure"></span><br/>
-            <textarea class="treasureInput" name="treasure"></textarea>
+            Treasure:<br/>
+            {{encounterMonsterType.treasure}}
         </div>
         <div class="stats-group">
-            <span class="size"></span> size w/ <span class="movement"></span> movement
+            {{encounterMonsterType.monsterType.size}} size w/ {{encounterMonsterType.monsterType.movement}} movement
         </div>
         <div class="stats-group">
             <h3>Notes:</h3>
-            <pre class="notes"></pre>
+            {{encounterMonsterType.notes}}
         </div>
         <div class="stats-group">
             <h3>Special Abilities:</h3>
-            <pre class="specialAbilities"></pre>
+            {{encounterMonsterType.monsterType.specialAbilities}}
         </div>
         <div class="stats-group">
             <h3>Exceptional Abilities:</h3>
-            <pre class="exceptionalAbilities"></pre>
+            {{encounterMonsterType.monsterType.exceptionalAbilities}}
         </div>
     </form>
 

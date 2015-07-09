@@ -19,13 +19,6 @@
 
             $http.get('controller/encounter/'+self.selectedEncounter.id).success(function(data){
                 self.encounterDetail = data;
-
-                $.each(self.encounterDetail.encounterMonsterTypes, function(index, encounterMonsterType) {
-                    $http.get('controller/monster/'+encounterMonsterType.monsterType.id).success(function(data) {
-                        self.encounterDetail.monsterTypes[index] = data;
-                    })
-                });
-
             });
         }
 

@@ -5,12 +5,13 @@ public class MonsterType {
     private Integer id;
     private String name;
     private Integer attackCount;
-    private boolean weaponAttackFlag;
+    private Boolean weaponAttackFlag;
+    private Integer damagePerAttack;
     private Integer hitDice;
     private Integer armorClass;
     private String size;
     private String movement;
-    private String treasre;
+    private String treasure;
     private Integer specialAbilityCount;
     private String specialAbilities;
     private Integer exceptionalAbilityCount;
@@ -22,10 +23,12 @@ public class MonsterType {
     private String notes;
 
     public Integer getId() {
+
         return id;
     }
 
     public void setId(Integer id) {
+
         this.id = id;
     }
 
@@ -49,14 +52,24 @@ public class MonsterType {
         this.attackCount = attackCount;
     }
 
-    public boolean isWeaponAttackFlag() {
+    public Boolean getWeaponAttackFlag() {
 
         return weaponAttackFlag;
     }
 
-    public void setWeaponAttackFlag(boolean weaponAttackFlag) {
+    public void setWeaponAttackFlag(Boolean weaponAttackFlag) {
 
         this.weaponAttackFlag = weaponAttackFlag;
+    }
+
+    public Integer getDamagePerAttack() {
+
+        return damagePerAttack;
+    }
+
+    public void setDamagePerAttack(Integer damagePerAttack) {
+
+        this.damagePerAttack = damagePerAttack;
     }
 
     public Integer getHitDice() {
@@ -99,14 +112,14 @@ public class MonsterType {
         this.movement = movement;
     }
 
-    public String getTreasre() {
+    public String getTreasure() {
 
-        return treasre;
+        return treasure;
     }
 
-    public void setTreasre(String treasre) {
+    public void setTreasure(String treasure) {
 
-        this.treasre = treasre;
+        this.treasure = treasure;
     }
 
     public Integer getSpecialAbilityCount() {
