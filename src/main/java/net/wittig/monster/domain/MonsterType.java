@@ -1,4 +1,4 @@
-package net.wittig.monster.controller;
+package net.wittig.monster.domain;
 
 public class MonsterType {
 
