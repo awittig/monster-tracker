@@ -2,9 +2,11 @@ package net.wittig.monster.controller;
 
 import com.google.gson.Gson;
 import net.wittig.monster.domain.Experience;
+import net.wittig.monster.domain.MonsterType;
 import net.wittig.monster.service.ExperienceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,11 +29,9 @@ public class MonsterController {
     ExperienceService experienceService;
 
     @RequestMapping(value="monsters", method=RequestMethod.GET)
-    public String monsters() {
+    public List<MonsterType> monsters() {
 
-        List<Map<String, Object>> monsters = jdbcOperations.queryForList("select * from monster_type", new HashMap<>());
-        Gson gson = new Gson();
-        return gson.toJson(monsters);
+        return jdbcOperations.query("select * from monster_type", BeanPropertyRowMapper.newInstance(MonsterType.class));
     }
 
     @RequestMapping(value="monster/{id}", method=RequestMethod.GET)

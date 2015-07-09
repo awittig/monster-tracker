@@ -58,6 +58,14 @@ public class EncounterRepository {
                     BeanPropertyRowMapper.newInstance(EncounterMonster.class),
                     encounterId, encounterMonsterType.getMonsterType().getId());
             encounterMonsterType.addEncounterMonsters(encounterMonsters);
+
+            MonsterType monsterType = jdbcOperations.queryForObject(
+                    "select * from monster_type where id = ?",
+                    BeanPropertyRowMapper.newInstance(MonsterType.class),
+                    encounterMonsterType.getMonsterType().getId()
+            );
+            encounterMonsterType.setMonsterType(monsterType);
+
         }
         return encounter;
     }
